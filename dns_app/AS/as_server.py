@@ -21,7 +21,7 @@ def load_from_file():
     except FileNotFoundError:
         return {}
 
-# 校验IP合法性
+# Verify IP legitimacy
 def ip_range(ip):
     ip_list = ip.split('.')
     for num in ip_list:
@@ -30,7 +30,7 @@ def ip_range(ip):
     return True
 
 
-# 校验输入合法性
+# Verify input legitimacy
 def is_valid_ip(ip, hostname):
     hostname_format = re.match(r'^([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,}$', hostname)
     check_hostname = True if hostname_format else False
@@ -78,7 +78,7 @@ def main():
                 if len(message_parts) >= 3:
                     _, hostname, ip = message_parts[:3]
 
-                    # 处理注册请求
+                    # Processing registration requests
                     if "HOSTNAME=" in hostname and "IP=" in ip:
                         hostname = hostname[9:]
                         ip = ip[3:]
@@ -86,7 +86,7 @@ def main():
                         if not check_ip:
                             response = "IP or HostName exception"
                         else:
-                            # 处理注册逻辑
+                            # Processing registration logic
                             register(hostname, ip)
                             response = "Registration successful"
                     else:
@@ -98,7 +98,7 @@ def main():
                     _, type_, hostname = message_parts[:3]
                     if "TYPE=" in type_ and "HOSTNAME=" in hostname:
                         hostname = hostname[9:]
-                        # 处理注册逻辑
+                        # Processing registration logic
                         search_data = dns_records.get(hostname)
                         if not search_data:
                             response = 'IP not fund'
