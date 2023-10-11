@@ -1,6 +1,6 @@
 import requests
 
-# 注册请求
+# registration request
 #url = 'http://192.168.3.198:30002/register'
 #jsons = {
 #    'hostname': 'www.test4.com',
@@ -14,7 +14,7 @@ import requests
 #res = requests.put(url=url, json=jsons, headers=headers)
 #print(res.text)
 
-# 查询请求
+# query request
 url = 'http://192.168.3.198:30003/fibonacci'
 params = {
     "hostname": "www.test4.com",
